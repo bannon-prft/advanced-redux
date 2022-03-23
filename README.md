@@ -47,3 +47,18 @@ decreaseQuantity(state, action) {
 
 - Moved toggling cart to a uiSlice file
 - Whole time was missing the `find` method to do what I was trying to do smh
+
+## Thunk
+
+- function that delays an action until later
+
+## Action Creator
+
+```js
+const actionCreator = (data) => {
+  return { type: '', payload: ... }
+}
+```
+- Redux toolkit accepts action creators which return functions
+  - Gives dispatch argument automatically
+- Want action creators that can perform side-effects
