@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   items: [],
-  cartTotal: 0
+  cartTotal: 0,
+  totalItems: 0
 }
 
 const cartSlice = createSlice({
@@ -10,34 +11,29 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      const exists = state.items.filter(
-        (item) => item.title === action.payload.title
-      )
-      if (exists.length === 1) {
-        for (const item of state.items) {
-          if (item.title === action.payload.title) {
-            item.quantity = item.quantity + 1
-            item.total = item.total + item.price
-            state.cartTotal += item.price
-            break
-          }
-        }
+      const newItem = action.payload
+      const existingItem = state.items.find(item => item.title === newItem.title)
+      if (!existingItem) {
+        state.items.push(newItem)
+        state.cartTotal += newItem.price
       } else {
-        state.items.push(action.payload)
-        state.cartTotal += action.payload.price
+        existingItem.quantity++
+        existingItem.total += newItem.price
+        state.cartTotal += newItem.price
       }
+      state.totalItems++
     },
-    decreaseQuantity(state, action) {
-      for (let item of state.items) {
-        if (item.title === action.payload.title) {
-          item.quantity = item.quantity - 1
-          item.total = item.total - item.price
-          state.cartTotal = state.cartTotal - item.price
-          if (item.quantity === 0) {
-            item = {}
-          }
-        }
+    removeItem(state, action) {
+      const title = action.payload.title
+      const existingItem = state.items.find(item => item.title === title)
+      state.cartTotal -= existingItem.price
+      if (existingItem.quantity === 1) {
+        state.items = state.items.filter(item => item.title !== title)
+      } else {
+        existingItem.quantity--
+        existingItem.total -= existingItem.price
       }
+      state.totalItems--
     },
   },
 })

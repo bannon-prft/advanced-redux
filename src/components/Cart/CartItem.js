@@ -13,7 +13,7 @@ const CartItem = (props) => {
   }
 
   const decreaseHandler = () => {
-    dispatch(cartActions.decreaseQuantity(props.item))
+    dispatch(cartActions.removeItem(props.item))
   }
 
   return (

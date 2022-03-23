@@ -3,9 +3,10 @@
 This is the advanced redux portion from [React - The Complete Guide (incl Hooks, React Router, Redux)](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)
 
 
-## Attempting to solve before watching videos
+## Attempting to solve before watching videos - DONT DO THIS
 
 - Found probably the most non-elegant solution in history for the addItem reducer, but it works
+  - *Was looking for `find` method this whole time*
 ```js
 addItem(state, action) {
   const exists = state.items.filter(
@@ -45,3 +46,4 @@ decreaseQuantity(state, action) {
 ## Improvements after watching instructor's solution
 
 - Moved toggling cart to a uiSlice file
+- Whole time was missing the `find` method to do what I was trying to do smh
