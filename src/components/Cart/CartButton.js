@@ -1,4 +1,4 @@
-import classes from './CartButton.module.css';
+import classes from './CartButton.module.css'
 
 const CartButton = (props) => {
   return (
@@ -6,7 +6,7 @@ const CartButton = (props) => {
       <span>My Cart</span>
       <span className={classes.badge}>1</span>
     </button>
-  );
-};
+  )
+}
 
-export default CartButton;
+export default CartButton

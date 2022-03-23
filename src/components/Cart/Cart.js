@@ -1,6 +1,6 @@
-import Card from '../UI/Card';
-import classes from './Cart.module.css';
-import CartItem from './CartItem';
+import Card from '../UI/Card'
+import classes from './Cart.module.css'
+import CartItem from './CartItem'
 
 const Cart = (props) => {
   return (
@@ -12,7 +12,7 @@ const Cart = (props) => {
         />
       </ul>
     </Card>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
